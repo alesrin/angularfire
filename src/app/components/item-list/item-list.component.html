@@ -1,0 +1,40 @@
+<div class="container">
+  <h2>Lista de Items</h2>
+
+  <!-- Formulario para agregar un nuevo elemento -->
+  <div class="add-item">
+    <input type="text" [(ngModel)]="newItem.name" placeholder="Nombre">
+    <input type="text" [(ngModel)]="newItem.description" placeholder="Descripción">
+    <button (click)="addItem()">Agregar</button>
+  </div>
+
+  <hr>
+
+  <!-- Lista de elementos -->
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td>
+          <span *ngIf="!item.editing">{{ item.name }}</span>
+          <input *ngIf="item.editing" type="text" [(ngModel)]="item.name">
+        </td>
+        <td>
+          <span *ngIf="!item.editing">{{ item.description }}</span>
+          <input *ngIf="item.editing" type="text" [(ngModel)]="item.description">
+        </td>
+        <td>
+          <button *ngIf="!item.editing" (click)="editItem(item)">✏️ Editar</button>
+          <button *ngIf="item.editing" (click)="saveItem(item)">💾 Guardar</button>
+          <button (click)="deleteItem(item.id!)">🗑️ Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
