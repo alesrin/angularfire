@@ -9,6 +9,8 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { ItemListComponent } from './components/item-list/item-list.component';
 import { FormsModule } from '@angular/forms';
 
+
+
 // Configuración de Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyCEvfGB2Eem2ZkewzBM7gIDuX5DUb6D1gM",
@@ -29,7 +31,7 @@ const firebaseConfig = {
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(firebaseConfig)), // Inicializar Firebase
     provideFirestore(() => getFirestore()), // Inicializar Firestore,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

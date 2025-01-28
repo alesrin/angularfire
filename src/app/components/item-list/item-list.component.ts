@@ -4,14 +4,17 @@ import { FirestoreService, Item } from '../../services/firestore.service';
 @Component({
   selector: 'app-item-list',
   templateUrl: './item-list.component.html',
-  styleUrls: ['./item-list.component.css']
+  styleUrls: ['./item-list.component.css'],
+  standalone: false
 })
 export class ItemListComponent implements OnInit {
+  //Inicializamos las propiedades del componente que nos van a permitir almanecenar datos, editarlos y borrarlos
   items: Item[] = [];
   newItem: Item = { name: '', description: '' };
 
   constructor(private firestoreService: FirestoreService) {}
 
+  //Obtenemos los datos de la base de datos una vez que se ha inicializado el componente
   ngOnInit(): void {
     this.firestoreService.getItems().subscribe(data => {
       console.log("Datos obtenidos desde Firestore:", data);
